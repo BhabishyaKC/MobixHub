@@ -44,7 +44,7 @@ export default function LoginPage() {
             </div>
           </div>
           <h1 className="text-3xl font-bold text-white">Mobix Hub</h1>
-          <p className="text-gray-400 mt-2">Welcome back to your mobile experience</p>
+          <p className="text-gray-400 mt-2">Welcome back!!</p>
         </div>
 
         <Card className="bg-gray-800 border-gray-700">
