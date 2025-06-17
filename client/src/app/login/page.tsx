@@ -10,6 +10,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Mail, Lock, Eye, EyeOff, Smartphone } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
+import axios from "axios"
+import { toast } from "sonner"
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Email is required"),
@@ -25,8 +27,9 @@ export default function LoginPage() {
     password: "",
   }
 
-  const handleSubmit = (values: typeof initialValues, { setSubmitting }: any) => {
-    console.log("Login submitted:", { ...values, rememberMe })
+  const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
+    const {data} = await axios.post('http://localhost:8080/login', values)
+   toast(data.message)
     
     setTimeout(() => {
       setSubmitting(false)
