@@ -9,6 +9,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { User, Mail, Lock, Eye, EyeOff, Smartphone } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
+import axios from "axios"
+import { toast } from 'sonner';
 
 const validationSchema = Yup.object({
   firstName: Yup.string().min(2, "First name must be at least 2 characters").required("First name is required"),
@@ -38,18 +40,19 @@ export default function Component() {
     confirmPassword: "",
   }
 
-  const handleSubmit = (values: typeof initialValues, { setSubmitting }: any) => {
-    console.log("Form submitted:", values)
-    // Handle registration logic here
+  const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
+   const {data} = await axios.post('http://localhost:8080/register', values)
+   toast(data)
+
     setTimeout(() => {
-      setSubmitting(false)
-    }, 1000)
-  }
+      setSubmitting(false);
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        {/* Logo and Brand */}
+      
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="bg-red-600 p-3 rounded-xl">
@@ -63,7 +66,7 @@ export default function Component() {
         <Card className="bg-gray-800 border-gray-700">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl text-white">Create Account</CardTitle>
-            <CardDescription className="text-gray-400">Join Mobix Hub and unlock amazing features</CardDescription>
+            
           </CardHeader>
           <CardContent>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
@@ -144,7 +147,7 @@ export default function Component() {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500 cursor-pointer"
                       >
                         {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </button>
@@ -172,7 +175,7 @@ export default function Component() {
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500 cursor-pointer"
                       >
                         {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </button>
@@ -184,7 +187,7 @@ export default function Component() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer"
                   >
                     {isSubmitting ? "Creating Account..." : "Create Account"}
                   </Button>

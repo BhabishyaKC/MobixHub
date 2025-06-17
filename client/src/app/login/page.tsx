@@ -50,7 +50,7 @@ export default function LoginPage() {
         <Card className="bg-gray-800 border-gray-700">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl text-white">Sign In</CardTitle>
-            <CardDescription className="text-gray-400">Enter your credentials to access your account</CardDescription>
+            
           </CardHeader>
           <CardContent>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
@@ -125,7 +125,7 @@ export default function LoginPage() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer"
                   >
                     {isSubmitting ? "Signing In..." : "Sign In"}
                   </Button>
@@ -136,7 +136,7 @@ export default function LoginPage() {
                       <span className="w-full border-t border-gray-600" />
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-gray-800 px-2 text-gray-400">Or continue with</span>
+                      <span className="bg-gray-800 px-2 text-gray-400 ">Or continue with</span>
                     </div>
                   </div>
 
@@ -145,7 +145,7 @@ export default function LoginPage() {
                     <Button
                       type="button"
                       variant="outline"
-                      className="bg-gray-700 border-gray-600 text-white hover:bg-gray-600 hover:border-gray-500"
+                      className="bg-gray-700 border-gray-600 text-white hover:bg-gray-600 hover:border-gray-500 cursor-pointer"
                     >
                       <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
                         <path
@@ -170,7 +170,7 @@ export default function LoginPage() {
                     <Button
                       type="button"
                       variant="outline"
-                      className="bg-gray-700 border-gray-600 text-white hover:bg-gray-600 hover:border-gray-500"
+                      className="bg-gray-700 border-gray-600 text-white hover:bg-gray-600 hover:border-gray-500 cursor-pointer"
                     >
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />

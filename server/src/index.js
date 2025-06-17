@@ -1,14 +1,20 @@
-import express from 'express'
-import connect from './db/connect.js'
-const app = express()
-const port = 8000
 
+import express from "express";
+import connect from "./db/connect.js";
+import userRouter from './routes/user.js'
+import cors from 'cors'
+
+
+
+const port = 8080
+const app = express()
 connect()
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use(express.json());
+app.use(cors());
+app.use(userRouter);
+
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
 })
