@@ -1,4 +1,4 @@
-
+"use server"
 import express from "express";
 import connect from "./db/connect.js";
 import userRouter from './routes/user.js'

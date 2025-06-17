@@ -1,9 +1,10 @@
+import NavbarPage from '@/components/navbar'
 import React from 'react'
 
 const Home = () => {
   return (
     <div>
-      <h1>Home Page</h1>
+      <NavbarPage/>
     </div>
   )
 }
