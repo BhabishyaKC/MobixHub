@@ -1,7 +1,5 @@
-# MobixHub
 
-![MobixHub Banner](https://via.placeholder.com/1200x400/007bff/ffffff?text=MobixHub+-+Your+Electronics+Hub)
-_A placeholder banner. Replace this with a visually appealing image that represents MobixHub._
+# MobixHub 
 
 MobixHub is a cutting-edge e-commerce platform specializing in mobile devices, laptops, PCs, keyboard,gaming tools and various electronic gadget. Built with the powerful MERN stack and Next.js, MobixHub aims to provide a seamless and intuitive shopping experience for all your electronic needs.
 
@@ -95,7 +93,7 @@ MobixHub's development is divided into distinct phases to manage complexity and 
     * ✅ User Login UI (Completed)
     * ✅ Responsive Navigation Bar (Completed)
     * ⬜ State Management for User Authentication (using Redux)  
-    * ⬜ Form Validation (using Formik & Yup) (Completed)
+    * ✅ Form Validation (using Formik & Yup) (Completed)
 * **Backend:**
     * ✅ User Model (`User.js` with Mongoose)
     * ✅ User Registration API (`/api/register` - Completed)
@@ -110,6 +108,7 @@ MobixHub's development is divided into distinct phases to manage complexity and 
 * ⬜ API for adding, retrieving, updating, and deleting products.
 * ⬜ Frontend components for displaying product listings.
 * ⬜ Basic product detail pages.
+* ⬜ Categories for products.
 
 **Phase 3: Shopping Cart & User Profiles**
 
@@ -129,6 +128,7 @@ MobixHub's development is divided into distinct phases to manage complexity and 
 * ⬜ Secure checkout process.
 * ⬜ Integration with a payment gateway.
 * ⬜ Order history for users.
+* ⬜ Search history for users.
 
 **Phase 6: Reviews, Ratings & Enhancements**
 
