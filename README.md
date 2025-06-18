@@ -94,8 +94,8 @@ MobixHub's development is divided into distinct phases to manage complexity and 
     * ✅ User Registration UI (Completed)
     * ✅ User Login UI (Completed)
     * ✅ Responsive Navigation Bar (Completed)
-    * ⬜ State Management for User Authentication (using Redux)
-    * ⬜ Form Validation (using Formik & Yup)
+    * ⬜ State Management for User Authentication (using Redux)  
+    * ⬜ Form Validation (using Formik & Yup) (Completed)
 * **Backend:**
     * ✅ User Model (`User.js` with Mongoose)
     * ✅ User Registration API (`/api/register` - Completed)
@@ -116,6 +116,8 @@ MobixHub's development is divided into distinct phases to manage complexity and 
 * ⬜ Shopping Cart functionality (add to cart, view cart, update quantity, remove from cart).
 * ⬜ User profile management.
 * ⬜ Wishlist functionality.
+* ⬜ Notification functionality.
+
 
 **Phase 4: Search, Filtering & Admin Panel**
 
@@ -240,26 +242,7 @@ The frontend application provides the following routes:
 
 _More routes will be added as new features are developed in subsequent phases._
 
----
 
-## Contributing
-
-We welcome contributions to MobixHub! If you'd like to contribute, please follow these steps:
-
-1.  Fork the repository.
-2.  Create a new branch (`git checkout -b feature/your-feature-name`).
-3.  Make your changes.
-4.  Commit your changes (`git commit -m 'Add new feature'`).
-5.  Push to the branch (`git push origin feature/your-feature-name`).
-6.  Open a Pull Request.
-
-Please ensure your code adheres to the project's coding style and includes appropriate tests.
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
