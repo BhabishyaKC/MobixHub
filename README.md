@@ -17,8 +17,6 @@ MobixHub is a cutting-edge e-commerce platform specializing in mobile devices, l
     * [Running the Application](#running-the-application)
 * [API Endpoints](#api-endpoints)
 * [Frontend Routes](#frontend-routes)
-* [Contributing](#contributing)
-* [License](#license)
 * [Contact](#contact)
 
 ---
