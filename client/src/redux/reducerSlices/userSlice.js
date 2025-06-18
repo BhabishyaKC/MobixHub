@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   email: '',
+  firstName: '',
+  lastName: '',
   token: '',
   isLoggedIn: false,
   _id: '',
-  firstName: '',
-  lastName: ''
 }
 
 export const userSlice = createSlice({
@@ -17,12 +17,13 @@ export const userSlice = createSlice({
     addLoginDetails: (state, action) => {
       return {
         ...state,
-        email: action.payload.user?.email || '',
-        token: action.payload?.token || '',
-        isLoggedIn: action.payload?.isLoggedIn || false,
-        _id: action.payload.user?._id || '',
-        firstName: action.payload.user?.firstName || '',
-        lastName: action.payload.user?.lastName || ''
+        email: action.payload.user?.email,
+        firstName: action.payload.user?.firstName,
+        lastName: action.payload.user?.lastName,
+        token: action.payload?.token,
+        isLoggedIn: action.payload?.isLoggedIn,
+        _id: action.payload.user?._id
+        
       }
     },
   },

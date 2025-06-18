@@ -12,7 +12,9 @@ import { useState } from "react"
 import Link from "next/link"
 import axios from "axios"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 import { useDispatch } from "react-redux"
+import { addLoginDetails } from "@/redux/reducerSlices/userSlice"
 
 
 
@@ -29,11 +31,17 @@ export default function LoginPage() {
     email: "",
     password: "",
   }
-
+  
+  const router = useRouter()
+  const dispatch =useDispatch()
   const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
     const {data} = await axios.post('http://localhost:8080/login', values)
-    // if(data?.isLoggedIn) router.back();
-   toast(data?.message)
+    if(data?.isLoggedIn) router.back();
+    toast(data?.message)
+    if(data) {
+      
+      dispatch(addLoginDetails(data))
+    }
    
     
     setTimeout(() => {

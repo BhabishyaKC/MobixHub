@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { User, Mail, Lock, Eye, EyeOff, Smartphone } from "lucide-react"
+import { User, Mail, Lock, Eye, EyeOff, Smartphone, Phone } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
 import axios from "axios"
@@ -16,6 +16,9 @@ const validationSchema = Yup.object({
   firstName: Yup.string().min(2, "First name must be at least 2 characters").required("First name is required"),
   lastName: Yup.string().min(2, "Last name must be at least 2 characters").required("Last name is required"),
   email: Yup.string().email("Invalid email address").required("Email is required"),
+  phone: Yup.string()
+  .matches(/^[0-9]{10}$/, "Phone must be 10 digits")
+  .required("Phone number is required"),
   password: Yup.string()
     .min(8, "Password must be at least 8 characters")
     .matches(
@@ -36,6 +39,7 @@ export default function Component() {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     password: "",
     confirmPassword: "",
   }
@@ -126,6 +130,27 @@ export default function Component() {
                     />
                     <ErrorMessage name="email" component="div" className="text-red-400 text-sm" />
                   </div>
+
+                  <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-gray-200 flex items-center gap-2">
+                    <Smartphone className="h-4 w-4 text-red-500" />
+                    Phone Number
+                  </Label>
+                  <Field
+                    as={Input}
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="9800000000"
+                    className={`bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-red-500 focus:ring-red-500 ${
+                      errors.phone && touched.phone ? "border-red-500" : ""
+                    }`}
+                  />
+                  <ErrorMessage name="phone" component="div" className="text-red-400 text-sm" />
+                </div>
+
+
+                  
 
                  
                   <div className="space-y-2">
