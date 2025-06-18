@@ -12,6 +12,9 @@ import { useState } from "react"
 import Link from "next/link"
 import axios from "axios"
 import { toast } from "sonner"
+import { useDispatch } from "react-redux"
+
+
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Email is required"),
@@ -29,7 +32,9 @@ export default function LoginPage() {
 
   const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
     const {data} = await axios.post('http://localhost:8080/login', values)
-   toast(data.message)
+    // if(data?.isLoggedIn) router.back();
+   toast(data?.message)
+   
     
     setTimeout(() => {
       setSubmitting(false)

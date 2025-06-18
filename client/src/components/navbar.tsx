@@ -60,7 +60,7 @@ export default function NavbarPage() {
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <Input
-                  placeholder="Search for cutting-edge gadgets and accessories..."
+                  placeholder="Search for products"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-12 pr-4 py-3 bg-gray-800/50 backdrop-blur-sm border-gray-700/50 text-white placeholder-gray-400 focus:border-red-500/50 focus:ring-red-500/20 rounded-xl transition-all duration-200 w-full"
