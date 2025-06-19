@@ -16,7 +16,13 @@ import { useRouter } from "next/navigation"
 const validationSchema = Yup.object({
   firstName: Yup.string().min(2, "First name must be at least 2 characters").required("First name is required"),
   lastName: Yup.string().min(2, "Last name must be at least 2 characters").required("Last name is required"),
-  email: Yup.string().email("Invalid email address").required("Email is required"),
+email: Yup.string()
+  .email("Invalid email format")
+  .matches(
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    "Invalid email address"
+  )
+  .required("Email is required"),
   phone: Yup.string()
   .matches(/^[0-9]{10}$/, "Phone must be 10 digits")
   .required("Phone number is required"),

@@ -5,6 +5,10 @@ import jwt from "jsonwebtoken"
 const saltRounds = 10
 const userRouter = Router()
 
+
+
+// Register route 
+
 userRouter.post("/register", async (req, res) => {
   try {
     // Step 1: Check if the email already exists
@@ -46,6 +50,8 @@ userRouter.post("/register", async (req, res) => {
     });
   }
 });
+
+ // Login route
 
   userRouter.post('/login', async (req, res) => {
     const {email, password} = req.body
