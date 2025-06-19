@@ -1,13 +1,15 @@
+'use client '
+import HomeClient from '@/components/homeClient'
 import NavbarPage from '@/components/navbar'
 import React from 'react'
-import { useSelector } from 'react-redux'
+
 
 
 const Home = () => {
-  // const {email} = useSelector(state=> state.user)
+  
   return (
     <div>
-      {/* {email} */}
+     <HomeClient/>
       <NavbarPage/>
     </div>
   )

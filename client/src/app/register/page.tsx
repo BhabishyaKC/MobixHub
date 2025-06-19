@@ -11,6 +11,7 @@ import { useState } from "react"
 import Link from "next/link"
 import axios from "axios"
 import { toast } from 'sonner';
+import { useRouter } from "next/navigation"
 
 const validationSchema = Yup.object({
   firstName: Yup.string().min(2, "First name must be at least 2 characters").required("First name is required"),
@@ -43,15 +44,25 @@ export default function Component() {
     password: "",
     confirmPassword: "",
   }
+   
+  
+  const router = useRouter();
 
-  const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
-   const {data} = await axios.post('http://localhost:8080/register', values)
-   toast(data)
+const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
+  try {
+    const { data } = await axios.post("http://localhost:8080/register", values);
 
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 1000);
-  };
+    toast(data.message); // shows toast regardless of outcome
+
+    if (data.success) {
+      router.push("/login"); // ✅ redirect to login after success
+    }
+  } catch (error: any) {
+    toast(error.response?.data?.message || "Something went wrong");
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">

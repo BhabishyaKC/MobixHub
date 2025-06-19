@@ -5,19 +5,47 @@ import jwt from "jsonwebtoken"
 const saltRounds = 10
 const userRouter = Router()
 
-userRouter.post('/register', async (req, res) => {
-  // step 1: Check if the email already exists
-    const user = await User.findOne({ email: req.body.email })
-    if(user) return res.send('Email already taken')
-    else{ 
-  // step 2: Hash the password
-        req.body.password = await  bcrypt.hash(req.body.password, saltRounds)
-  // step 3: Create the user
-        User.create(req.body)}
+userRouter.post("/register", async (req, res) => {
+  try {
+    // Step 1: Check if the email already exists
+    const existingUser = await User.findOne({ email: req.body.email });
 
-        return res.send('user registered')
-  })
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: "Email already taken",
+      });
+    }
 
+    // Step 2: Hash the password
+    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
+    // Step 3: Create the user with hashed password
+    const newUser = await User.create({
+      ...req.body,
+      password: hashedPassword,
+    });
+
+    // Step 4: Send success response
+    return res.status(201).json({
+      success: true,
+      message: "User registered successfully. Please log in.",
+      user: {
+        _id: newUser._id,
+        email: newUser.email,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        phone: newUser.phone,
+      },
+    });
+  } catch (error) {
+    console.error("Register error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server error. Please try again later.",
+    });
+  }
+});
 
   userRouter.post('/login', async (req, res) => {
     const {email, password} = req.body
