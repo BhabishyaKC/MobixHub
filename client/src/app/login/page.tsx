@@ -36,7 +36,7 @@ export default function LoginPage() {
   const dispatch =useDispatch()
   const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
     const {data} = await axios.post('http://localhost:8080/login', values)
-    if(data?.isLoggedIn) router.push('/');
+    if(data?.isLoggedIn) router.back();
     toast(data?.message)
     if(data) {
       
