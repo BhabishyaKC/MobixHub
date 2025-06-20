@@ -92,6 +92,7 @@ MobixHub's development is divided into distinct phases to manage complexity and 
     * ⬜Responsive Navigation Bar (Completed)
     * ✅ State Management for User Authentication (using Redux)  
     * ✅ Form Validation (using Formik & Yup) (Completed)
+    * ⬜ Admin dashboard
 * **Backend:**
     * ✅ User Model (`User.js` with Mongoose)
     * ✅ User Registration API (`/api/register` - Completed)
@@ -99,6 +100,9 @@ MobixHub's development is divided into distinct phases to manage complexity and 
     * ✅ Password Hashing (using bcrypt - Completed)
     * ✅ JWT Token Generation for Authentication (Completed)
     * ✅ Get All Users API (for testing/admin - `/api/users` - Completed)
+    * ✅ Basic logout functionality
+    * ⬜ Admin dashboard functionality
+
 
 **Phase 2: Product Catalog & Basic Display**
 
