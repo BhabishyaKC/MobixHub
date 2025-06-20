@@ -89,8 +89,8 @@ MobixHub's development is divided into distinct phases to manage complexity and 
 * **Frontend:**
     * ✅ User Registration UI (Completed)
     * ✅ User Login UI (Completed)
-    * ✅ Responsive Navigation Bar (Completed)
-    * ⬜ State Management for User Authentication (using Redux)  
+    * ⬜Responsive Navigation Bar (Completed)
+    * ✅ State Management for User Authentication (using Redux)  
     * ✅ Form Validation (using Formik & Yup) (Completed)
 * **Backend:**
     * ✅ User Model (`User.js` with Mongoose)
