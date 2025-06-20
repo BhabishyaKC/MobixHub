@@ -61,7 +61,7 @@ const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any
     toast(data.message); // shows toast regardless of outcome
 
     if (data.success) {
-      router.push("/login"); // ✅ redirect to login after success
+      router.push("/login"); 
     }
   } catch (error: any) {
     toast(error.response?.data?.message || "Something went wrong");

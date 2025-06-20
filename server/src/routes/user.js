@@ -1,19 +1,22 @@
-import { Router } from "express"
-import User from "../model/user.js"
-import bcrypt from 'bcrypt'
-import jwt from "jsonwebtoken"
-const saltRounds = 10
-const userRouter = Router()
+import { Router } from "express";
+import User from "../model/user.js";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
+const saltRounds = 10;
+const JWT_SECRET = "33ceecfc3c914cb6dee77a8c16d08211caf46cfb1aa0b9372f24e39fbaaa1fca31d1a7ae7938579f7ed157636babf812ac42468d431128f7f3098c51a5a4a69a"; // You should move this to .env in production
 
+const userRouter = Router();
 
-// Register route 
-
+// ----------------------------
+// Register Route
+// ----------------------------
 userRouter.post("/register", async (req, res) => {
   try {
-    // Step 1: Check if the email already exists
-    const existingUser = await User.findOne({ email: req.body.email });
+    const { email, password, firstName, lastName, phone } = req.body;
 
+    // Check if email already exists
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
         success: false,
@@ -21,16 +24,19 @@ userRouter.post("/register", async (req, res) => {
       });
     }
 
-    // Step 2: Hash the password
-    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    // Step 3: Create the user with hashed password
+    // Create the user
     const newUser = await User.create({
-      ...req.body,
+      email,
       password: hashedPassword,
+      firstName,
+      lastName,
+      phone,
     });
 
-    // Step 4: Send success response
+    // Send response
     return res.status(201).json({
       success: true,
       message: "User registered successfully. Please log in.",
@@ -51,35 +57,63 @@ userRouter.post("/register", async (req, res) => {
   }
 });
 
- // Login route
+// ----------------------------
+// Login Route
+// ----------------------------
+userRouter.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  userRouter.post('/login', async (req, res) => {
-    const {email, password} = req.body
-    // ---step 1: email should exist
-    const user = await User.findOne({ email: email })
-    // --- no: return email not found
-    if(!user) return res.send({message: 'Email not found'})
-   
-    // ---yes: 
-      // step 2: check if password matches to that of db
-      const isMatched = await bcrypt.compare(password, user.password)
-      if(!isMatched) return res.send({message: 'Invalid password'})
-      
-      const token = await jwt.sign({ email: email }, '33ceecfc3c914cb6dee77a8c16d08211caf46cfb1aa0b9372f24e39fbaaa1fca31d1a7ae7938579f7ed157636babf812ac42468d431128f7f3098c51a5a4a69a');
-      
+    // Step 1: Check if email exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ success: false, message: "Email not found" });
+    }
 
-      return res.send({
-          message: 'logged in successfully',
-          user: user,
-          isLoggedIn: true,
-          token
-        })
-  })
-  
+    // Step 2: Compare passwords
+    const isMatched = await bcrypt.compare(password, user.password);
+    if (!isMatched) {
+      return res.status(401).json({ success: false, message: "Invalid password" });
+    }
 
-  userRouter.get('/users', async (req, res) => {
-    const data = await User.find()
-    return res.send(data)
-  })
-export default userRouter
+    // Step 3: Generate token
+    const token = jwt.sign(
+      { email: user.email, id: user._id },
+      JWT_SECRET,
+      { expiresIn: "7d" }
+    );
 
+    // Step 4: Send response
+    return res.status(200).json({
+      success: true,
+      message: "Logged in successfully",
+      isLoggedIn: true,
+      token,
+      user: {
+        _id: user._id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phone: user.phone,
+      },
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+// ----------------------------
+// Get All Users (Dev only)
+// ----------------------------
+userRouter.get("/users", async (req, res) => {
+  try {
+    const users = await User.find().select("-password"); // Exclude passwords
+    return res.status(200).json(users);
+  } catch (error) {
+    console.error("Fetch users error:", error);
+    return res.status(500).json({ message: "Server error while fetching users." });
+  }
+});
+
+export default userRouter;

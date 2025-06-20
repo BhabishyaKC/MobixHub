@@ -20,7 +20,7 @@ export default function NavbarPage() {
     { name: "Support", href: "/support" },
   ]
     const {isLoggedIn} = useSelector(state=>state.user)
-  const dispatch =useDispatch()
+    const dispatch =useDispatch()
     const handleLogout = ()=>{
       dispatch(logoutUser())
     }
