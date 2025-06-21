@@ -86,7 +86,7 @@ userRouter.post("/login", async (req, res) => {
     // Step 4: Send response
     return res.status(200).json({
       success: true,
-      message: "Logged in successfully",
+      message: " Logged in successfully",
       isLoggedIn: true,
       token,
       user: {
@@ -103,9 +103,9 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-// ----------------------------
+
 // Get All Users (Dev only)
-// ----------------------------
+
 userRouter.get("/users", async (req, res) => {
   try {
     const users = await User.find().select("-password"); // Exclude passwords
