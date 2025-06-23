@@ -56,7 +56,7 @@ export default function Component() {
 
 const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
   try {
-    const { data } = await axios.post("http://localhost:8080/register", values);
+    const { data } = await axios.post(process.env.NEXT_PUBLIC_API_URL + '/register', values);
 
     toast(data.message); // shows toast regardless of outcome
 
