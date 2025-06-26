@@ -34,21 +34,23 @@ export default function LoginPage() {
   
   const router = useRouter()
   const dispatch =useDispatch()
-  const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
-    const {data} = await axios.post(process.env.NEXT_PUBLIC_API_URL+'/login', values)
+ const handleSubmit = async (values: typeof initialValues, { setSubmitting }: any) => {
+  try {
+    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, values)
 
-    if(data?.isLoggedIn) router.push('/');
     toast(data?.message)
-    if(data) {
-      
+
+    if (data?.isLoggedIn) {
       dispatch(addLoginDetails(data))
+      router.push('/')
     }
-   
-    
-    setTimeout(() => {
-      setSubmitting(false)
-    }, 1000)
+  } catch (error: any) {
+    console.error("Login Error:", error?.response || error.message)
+    toast(error?.response?.data?.message || "Login failed")
+  } finally {
+    setSubmitting(false)
   }
+}
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">

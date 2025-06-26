@@ -1,7 +1,6 @@
 'use client '
 import Footer from '@/components/footer'
-import HomeClient from '@/components/homeClient'
-import NavbarPage from '@/components/navbar'
+import NavbarPage from '@/components/header'
 import React from 'react'
 
 
@@ -10,7 +9,6 @@ const Home = () => {
   
   return (
     <div>
-     <HomeClient/>
       <NavbarPage/>
       <Footer/>
     </div>

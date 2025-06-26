@@ -8,9 +8,9 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 const userRouter = Router();
 
-// ----------------------------
+
 // Register Route
-// ----------------------------
+
 userRouter.post("/register", async (req, res) => {
   try {
     const { email, password, firstName, lastName, phone } = req.body;
@@ -57,9 +57,9 @@ userRouter.post("/register", async (req, res) => {
   }
 });
 
-// ----------------------------
+
 // Login Route
-// ----------------------------
+
 userRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -77,11 +77,19 @@ userRouter.post("/login", async (req, res) => {
     }
 
     // Step 3: Generate token
-    const token = jwt.sign(
-      { email: user.email, id: user._id },
-      JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+   const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  console.error("❌ JWT_SECRET is undefined. Did you forget to load .env?");
+  return res.status(500).json({ success: false, message: "Internal config error" });
+}
+
+const token = jwt.sign(
+  { email: user.email, id: user._id },
+  JWT_SECRET,
+  { expiresIn: "7d" }
+);
+
 
     // Step 4: Send response
     return res.status(200).json({
@@ -89,13 +97,7 @@ userRouter.post("/login", async (req, res) => {
       message: " Logged in successfully",
       isLoggedIn: true,
       token,
-      user: {
-        _id: user._id,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        phone: user.phone,
-      },
+      user:user
     });
   } catch (error) {
     console.error("Login error:", error);
@@ -104,11 +106,11 @@ userRouter.post("/login", async (req, res) => {
 });
 
 
-// Get All Users (Dev only)
+// Get All Users 
 
 userRouter.get("/users", async (req, res) => {
   try {
-    const users = await User.find().select("-password"); // Exclude passwords
+    const users = await User.find().select("-password"); 
     return res.status(200).json(users);
   } catch (error) {
     console.error("Fetch users error:", error);
