@@ -90,19 +90,19 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
             <div className="space-y-2">
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="/" className="block text-gray-300 hover:text-white transition-colors text-sm">
                 Home
               </a>
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="Contact" className="block text-gray-300 hover:text-white transition-colors text-sm">
                Contact
               </a>
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="aboutUs" className="block text-gray-300 hover:text-white transition-colors text-sm">
                 About Us
               </a>
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="privacyPolicy" className="block text-gray-300 hover:text-white transition-colors text-sm">
                 Privacy Policy
               </a>
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="termsOfService" className="block text-gray-300 hover:text-white transition-colors text-sm">
                Terms of Service
               </a>
             </div>
