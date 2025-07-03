@@ -31,6 +31,30 @@ const slides = [
     imageUrl: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=500",
     imageAlt: "Mobile phones",
   },
+  {
+    id: 4,
+    title: "Mobile",
+    subtitle: "Innovation",
+    description: "Latest smartphones and accessories for the connected world",
+    buttonText: "View Mobiles",
+    imageUrl: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=500",
+    imageAlt: "Mobile phones",
+  },
+  {
+    id: 5,
+    title: "Mobile",
+    subtitle: "Innovation",
+    description: "Latest smartphones and accessories for the connected world",
+    buttonText: "View Mobiles",
+    imageUrl: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=500",
+    imageAlt: "Mobile phones",
+  },
+  {
+    id: 6,
+  
+    imageUrl: "https://admin.mobilemandu.com/storage/campaign_banners/FZuLkka4McdumSvAgWi1NUIagFSYyxrG0fkt2M34.jpg",
+    imageAlt: "Best Deals",
+  },
 ];
 
 export function Slider() {
@@ -111,7 +135,7 @@ export function Slider() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={` w-3 h-3 rounded-full transition-opacity ${
+            className={` w-2 h-2 rounded-full transition-opacity ${
               index === currentSlide ? "bg-white opacity-100" : "bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}

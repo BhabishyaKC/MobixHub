@@ -7,6 +7,15 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { logoutUser } from "@/redux/reducerSlices/userSlice"
 import { useDispatch, useSelector } from "react-redux"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 
 
@@ -30,7 +39,7 @@ export default function NavbarPage() {
 
   return (
     <div className="w-full">
-      <nav className="bg-gray-900 backdrop-blur-xl border-b border-gray-800/50 sticky top-0 z-50">
+      <nav className="bg-gray-900 backdrop-blur-xl border-b border-gray-800/50 sticky top-0 z-999">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-8">
@@ -104,9 +113,27 @@ export default function NavbarPage() {
               </Button>
 
               {isLoggedIn ? (
-                <Button onClick={handleLogout} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-xl flex items-center gap-2">
-                  <User className="w-5 h-5" /> <span>Logout</span>
-                </Button>
+                <>
+                
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <Avatar>
+                        <AvatarImage src="https://github.com/shadcn.png" />
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
+                    </DropdownMenuTrigger>   
+                    <DropdownMenuContent className="bg-gray-900 text-white w-50 ">
+                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Profile</DropdownMenuItem>
+                      <DropdownMenuItem>Billing</DropdownMenuItem>
+                      <DropdownMenuItem>Team</DropdownMenuItem>
+                      <DropdownMenuItem>Subscription</DropdownMenuItem>
+                     <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                   
+                </>
               ) : (
                 <Link href="/login">
                   <Button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-xl flex items-center gap-2">
