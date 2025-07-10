@@ -39,7 +39,7 @@ userRouter.post("/register", async (req, res) => {
     // Send response
     return res.status(201).json({
       success: true,
-      message: "User registered successfully. Please log in.",
+      message: "✔ User registered successfully. Please log in.",
       user: {
         _id: newUser._id,
         email: newUser.email,
@@ -73,7 +73,7 @@ userRouter.post("/login", async (req, res) => {
     // Step 2: Compare passwords
     const isMatched = await bcrypt.compare(password, user.password);
     if (!isMatched) {
-      return res.status(401).json({ success: false, message: "Invalid password" });
+      return res.status(401).json({ success: false, message: "❌Invalid password" });
     }
 
     // Step 3: Generate token
@@ -94,7 +94,7 @@ const token = jwt.sign(
     // Step 4: Send response
     return res.status(200).json({
       success: true,
-      message: " Logged in successfully",
+      message: "  Logged in successfully",
       isLoggedIn: true,
       token,
       user:user

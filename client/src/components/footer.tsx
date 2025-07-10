@@ -31,7 +31,7 @@ const Footer = () => {
                 <div>
                   <p className="text-gray-300 text-sm">Email</p>
                   <a href="mailto:info@mobixhub.com" className="text-white hover:text-blue-400 transition-colors">
-                    info@mobixhub.com
+                    info@digitalsansar.com
                   </a>
                 </div>
               </div>
@@ -113,7 +113,7 @@ const Footer = () => {
         <div className="border-t-2 border-gray-700 mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-center items-center">
             <p className="text-gray-400 text-sm">
-              © 2025 | Mobix Hub | All rights reserved.
+              © 2025 | Digital Sansar | All rights reserved.
             </p> 
             
           </div>

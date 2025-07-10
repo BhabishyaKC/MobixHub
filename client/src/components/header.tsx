@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Search, User, ShoppingCart, Menu, X, Bell, Heart, LogIn, Smartphone, ChevronDown } from "lucide-react"
+import { Search, User, ShoppingCart, Menu, X, Bell, Heart, LogIn, Smartphone, ChevronDown, Globe } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -45,10 +45,10 @@ export default function NavbarPage() {
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                 <div className="bg-red-600 p-3 rounded-xl">
-                  <Smartphone className="h-8 w-8 text-white" />
+                  <Globe className="h-8 w-8 text-white" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-white">Mobix Hub</span>
+                  <span className="text-xl font-bold text-white">Digital Sansar</span>
                   <span className="text-xs text-gray-400 hidden sm:block">Tech Excellence</span>
                 </div>
               </Link>
@@ -118,7 +118,7 @@ export default function NavbarPage() {
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                       <Avatar>
-                        <AvatarImage src="https://github.com/shadcn.png" />
+                        <AvatarImage className="bg-white cursor-pointer" src="/Images/user.png" />
                         <AvatarFallback>CN</AvatarFallback>
                       </Avatar>
                     </DropdownMenuTrigger>   

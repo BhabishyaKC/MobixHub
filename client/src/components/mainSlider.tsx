@@ -33,28 +33,14 @@ const slides = [
   },
   {
     id: 4,
-    title: "Mobile",
-    subtitle: "Innovation",
-    description: "Latest smartphones and accessories for the connected world",
-    buttonText: "View Mobiles",
-    imageUrl: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=500",
-    imageAlt: "Mobile phones",
+    title: "PC",
+    subtitle: "World",
+    description: "Latest laptops and monitors for the real ones",
+    buttonText: "View PCs",
+    imageUrl: "https://os-wordpress-media.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2022/02/15202055/Laptop-to-Desktop-Conversion-02.jpg",
+    imageAlt: "laptops",
   },
-  {
-    id: 5,
-    title: "Mobile",
-    subtitle: "Innovation",
-    description: "Latest smartphones and accessories for the connected world",
-    buttonText: "View Mobiles",
-    imageUrl: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=500",
-    imageAlt: "Mobile phones",
-  },
-  {
-    id: 6,
   
-    imageUrl: "https://admin.mobilemandu.com/storage/campaign_banners/FZuLkka4McdumSvAgWi1NUIagFSYyxrG0fkt2M34.jpg",
-    imageAlt: "Best Deals",
-  },
 ];
 
 export function Slider() {

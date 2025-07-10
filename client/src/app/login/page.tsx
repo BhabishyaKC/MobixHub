@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Mail, Lock, Eye, EyeOff, Smartphone } from "lucide-react"
+import { Mail, Lock, Eye, EyeOff, Smartphone, Globe } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
 import axios from "axios"
@@ -58,10 +58,10 @@ export default function LoginPage() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="bg-red-600 p-3 rounded-xl">
-              <Smartphone className="h-8 w-8 text-white" />
+              <Globe className="h-8 w-8 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-white">Mobix Hub</h1>
+          <h1 className="text-3xl font-bold text-white">Digital Sansar</h1>
           <p className="text-gray-400 mt-2">Welcome back!!</p>
         </div>
 
